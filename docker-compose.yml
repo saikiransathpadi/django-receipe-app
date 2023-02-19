@@ -6,9 +6,29 @@ services:
       context: .
       args:
         - DEV=true
+    restart: always
     ports:
       - "8000:8000"
     volumes:
       - ./app:/app
     command: >
       sh -c "python manage.py runserver 0.0.0.0:8000"
+    environment:
+      - DB_HOST=db
+      - DB_NAME=receipeDb
+      - DB_USER=devuser
+      - DB_PASS=devuser
+    depends_on:
+      - db
+  
+  db:
+    image: postgres:15-alpine
+    volumes:
+      - dev-db-data:/var/lib/postgres/data
+    environment:
+      - POSTGRES_DB=receipeDb
+      - POSTGRES_USER=devuser
+      - POSTGRES_PASSWORD=devuser
+
+volumes:
+  dev-db-data:
