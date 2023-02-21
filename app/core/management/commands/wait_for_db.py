@@ -16,6 +16,7 @@ class Command(BaseCommand):
         """Entry point for command"""
         self.stdout.write('waiting for database...')
         db_up = False
+        i = 0
         while not db_up:
             try:
                 self.check(databases=['default'])
@@ -23,4 +24,10 @@ class Command(BaseCommand):
             except (Psycopg2Error, OperationalError):
                 self.stdout.write("Database unavailable waiting for 1 sec...")
                 time.sleep(1)
+                i += 1
+                if i >= 8:
+                    self.stdout.write(
+                        "Error establishing a connection to db...."
+                    )
+                    break
         self.stdout.write("Datebase is up....")
