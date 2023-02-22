@@ -7,7 +7,7 @@ from django.contrib.auth.models import (
     BaseUserManager,
     PermissionsMixin,
 )
-from utils.models import TimestampModel
+# from utils.models import TimestampModel
 
 
 class UserManager(BaseUserManager):
@@ -32,7 +32,7 @@ class UserManager(BaseUserManager):
         return user
 
 
-class User(AbstractBaseUser, TimestampModel, PermissionsMixin):
+class User(AbstractBaseUser, PermissionsMixin):
     """User in the system."""
     email = models.EmailField(max_length=255, unique=True)
     name = models.CharField(max_length=255)
