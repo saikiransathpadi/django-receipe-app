@@ -19,7 +19,7 @@ services:
       - DB_HOST=db
       - DB_NAME=receipeDb
       - DB_USER=devuser
-      - DB_PASS=devuser
+      - DB_PASS=postgres
     depends_on:
       - db
   
@@ -30,7 +30,7 @@ services:
     environment:
       - POSTGRES_DB=receipeDb
       - POSTGRES_USER=devuser
-      - POSTGRES_PASSWORD=devuser
+      - POSTGRES_PASSWORD=postgres
     restart: always
 
 volumes:
