@@ -31,6 +31,7 @@ services:
       - POSTGRES_DB=receipeDb
       - POSTGRES_USER=devuser
       - POSTGRES_PASSWORD=devuser
+    restart: always
 
 volumes:
   dev-db-data:
