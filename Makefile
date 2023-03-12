@@ -21,3 +21,6 @@ lint_check:
 
 create_superuser:
 	docker-compose run --rm app sh -c 'python manage.py createsuperuser'
+
+new_app:
+	docker-compose run --rm app sh -c 'python manage.py startapp user'
